@@ -1,0 +1,51 @@
+
+{% extends "blog/base.html" %}
+
+{% block title %}
+    My Blog - Articles
+{% endblock %}
+
+{% block content %}
+
+    <h1>My Blog</h1>
+
+    {% for post in posts %}
+
+        <article>
+
+            <h2>
+                <a href="{{ post.get_absolute_url }}">
+                    {{ post.title }}
+                </a>
+            </h2>
+
+            <p class="date">
+                Published on: {{ post.publish|date:"d/m/Y H:i" }}
+
+                <br>
+
+                Author:
+                {% if post.author %}
+                    {{ post.author.get_full_name|default:post.author.username }}
+                {% else %}
+                    Unknown
+                {% endif %}
+            </p>
+
+            <p>
+                {{ post.body|truncatewords:30|linebreaks }}
+            </p>
+
+            <hr>
+
+        </article>
+
+    {% empty %}
+
+        <p>No published posts available.</p>
+
+    {% endfor %}
+
+    {% include "blog/pagination.html" with page_obj=posts %}
+
+{% endblock %}

@@ -1,0 +1,13 @@
+creation d'un environnement virtuelle : python -m venv my_venv
+installtion de django dans l'environnement virtuelle : pip install django or python -m pip install django
+creation de fichiers requirements.txt automatiquement  et mettre les bibliotheques necessaires dans ce fichier : pip freeze > requirements.txt
+creation de projet : django-admin startproject nom-apps . hint : "n'oublie pas d'utiliser le point a fin de cette commande"
+creation des applications : python manage.py startapp accounts , python manage.py startapp blog
+//////////////////////////////////////////// dans le niveau de projet 
+
+acceder a le fichier de settings.py sous le project qu'on a deja cree precedements "blog_site" puis ajouter les configurations de base de données :
+
+
+
+
+

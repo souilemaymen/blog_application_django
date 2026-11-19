@@ -1,0 +1,42 @@
+
+{% extends "blog/base.html" %}
+
+{% block title %}
+    {{ post.title }}
+{% endblock %}
+
+{% block content %}
+
+    <article>
+
+        <h1>{{ post.title }}</h1>
+
+        <p class="date">
+
+            Published on:
+            {{ post.publish|date:"d/m/Y H:i" }}
+
+            <br>
+
+            Author:
+            {% if post.author %}
+                {{ post.author.get_full_name|default:post.author.username }}
+            {% else %}
+                Unknown
+            {% endif %}
+
+        </p>
+
+        <div class="post-body">
+            {{ post.body|linebreaks }}
+        </div>
+
+    </article>
+
+    <hr>
+
+    <a href="{% url 'blog:post_list' %}">
+        Back to all posts
+    </a>
+
+{% endblock %}
